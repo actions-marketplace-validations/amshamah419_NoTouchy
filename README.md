@@ -42,7 +42,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Run NoTouchy
-      uses: amshamah419/NoTouchy@1.0.0
+      uses: amshamah419/NoTouchy@v1.0.2
       with:
         regex-pattern: 'pattern_here'
         github-token: ${{ secrets.GITHUB_TOKEN }}
