@@ -1,4 +1,4 @@
-name: 'NoTouchy'
+name: 'NoTouchyPlease'
 description: 'Fail a build if files matching a regex pattern are modified by certain users'
 inputs:
   regex-pattern:
