@@ -1,0 +1,13 @@
+name: 'NoTouchy'
+description: 'Fail a build if files matching a regex pattern are modified by certain users'
+inputs:
+  regex-pattern:
+    description: 'Regex pattern to match file names'
+    required: true
+  github-token:
+    description: 'GitHub token'
+    required: true
+    default: ${{ github.token }}
+runs:
+  using: 'node12'
+  main: 'index.js'
