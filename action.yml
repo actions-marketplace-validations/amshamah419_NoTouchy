@@ -1,7 +1,8 @@
 name: 'NoTouchyPlease'
 description: 'Fail a build if files matching a regex pattern are modified by certain users'
-icon: 'shield'
-color: 'purple'
+branding:
+  icon: 'shield'
+  color: 'purple'
 inputs:
   regex-pattern:
     description: 'Regex pattern to match file names'
