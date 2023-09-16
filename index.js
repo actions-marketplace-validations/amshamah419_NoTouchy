@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-const github = require('@actions/github');
+const { getOctokit, context } = require('@actions/github');
 const fs = require('fs').promises;
 
 async function getAuthorizedUsers() {
@@ -17,11 +17,11 @@ async function run() {
         const regexPattern = core.getInput('regex-pattern');
         const regex = new RegExp(regexPattern, 'i');
 
-        const pr = github.context.payload.pull_request;
-        const { owner, repo } = github.context.repo;
+        const pr = context.payload.pull_request;
+        const { owner, repo } = context.repo;
 
         const token = core.getInput('github-token', { required: true });
-        const octokit = new github.GitHub(token);
+        const octokit = getOctokit(token);
 
         const { data: files } = await octokit.pulls.listFiles({
             owner,
