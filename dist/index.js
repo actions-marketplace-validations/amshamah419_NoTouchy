@@ -9809,7 +9809,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(2669);
-const github = __nccwpck_require__(6330);
+const { getOctokit, context } = __nccwpck_require__(6330);
 const fs = (__nccwpck_require__(7147).promises);
 
 async function getAuthorizedUsers() {
@@ -9827,11 +9827,11 @@ async function run() {
         const regexPattern = core.getInput('regex-pattern');
         const regex = new RegExp(regexPattern, 'i');
 
-        const pr = github.context.payload.pull_request;
-        const { owner, repo } = github.context.repo;
+        const pr = context.payload.pull_request;
+        const { owner, repo } = context.repo;
 
         const token = core.getInput('github-token', { required: true });
-        const octokit = new github.GitHub(token);
+        const octokit = getOctokit(token);
 
         const { data: files } = await octokit.pulls.listFiles({
             owner,
